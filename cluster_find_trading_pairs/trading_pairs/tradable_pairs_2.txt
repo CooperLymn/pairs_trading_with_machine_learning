@@ -1,0 +1,117 @@
+Cluster 0:
+A and DGX are likely co-integrated. Coint pvalue = 0.003580 ADF test pvalue = 0.000161
+ABT and ZTS are likely co-integrated. Coint pvalue = 0.002207 ADF test pvalue = 0.000452
+AMGN and VRTX are likely co-integrated. Coint pvalue = 0.007111 ADF test pvalue = 0.001433
+DGX and DHR are likely co-integrated. Coint pvalue = 0.000676 ADF test pvalue = 0.007628
+DGX and JNJ are likely co-integrated. Coint pvalue = 0.005788 ADF test pvalue = 0.000384
+DGX and MTD are likely co-integrated. Coint pvalue = 0.000074 ADF test pvalue = 0.000269
+DGX and RMD are likely co-integrated. Coint pvalue = 0.006343 ADF test pvalue = 0.005138
+DGX and TMO are likely co-integrated. Coint pvalue = 0.000497 ADF test pvalue = 0.005356
+DGX and WAT are likely co-integrated. Coint pvalue = 0.007992 ADF test pvalue = 0.003916
+EW and RMD are likely co-integrated. Coint pvalue = 0.004184 ADF test pvalue = 0.001029
+EW and TECH are likely co-integrated. Coint pvalue = 0.006274 ADF test pvalue = 0.001685
+HOLX and MTD are likely co-integrated. Coint pvalue = 0.002590 ADF test pvalue = 0.000694
+HOLX and TMO are likely co-integrated. Coint pvalue = 0.003647 ADF test pvalue = 0.002037
+IQV and STE are likely co-integrated. Coint pvalue = 0.005716 ADF test pvalue = 0.001558
+IQV and WAT are likely co-integrated. Coint pvalue = 0.009555 ADF test pvalue = 0.003029
+ISRG and SYK are likely co-integrated. Coint pvalue = 0.009846 ADF test pvalue = 0.001687
+JNJ and LH are likely co-integrated. Coint pvalue = 0.001333 ADF test pvalue = 0.001251
+JNJ and MTD are likely co-integrated. Coint pvalue = 0.003348 ADF test pvalue = 0.003029
+JNJ and RMD are likely co-integrated. Coint pvalue = 0.001570 ADF test pvalue = 0.003491
+JNJ and RVTY are likely co-integrated. Coint pvalue = 0.003175 ADF test pvalue = 0.000823
+JNJ and TECH are likely co-integrated. Coint pvalue = 0.003563 ADF test pvalue = 0.001377
+JNJ and TMO are likely co-integrated. Coint pvalue = 0.004463 ADF test pvalue = 0.006206
+JNJ and WAT are likely co-integrated. Coint pvalue = 0.002706 ADF test pvalue = 0.003204
+LH and WAT are likely co-integrated. Coint pvalue = 0.009757 ADF test pvalue = 0.000955
+RVTY and TECH are likely co-integrated. Coint pvalue = 0.007406 ADF test pvalue = 0.003950
+STE and ZTS are likely co-integrated. Coint pvalue = 0.000876 ADF test pvalue = 0.000106
+Cluster 1:
+Cluster 2:
+ACN and BX are likely co-integrated. Coint pvalue = 0.001061 ADF test pvalue = 0.001749
+ADP and MCD are likely co-integrated. Coint pvalue = 0.003449 ADF test pvalue = 0.002911
+ADSK and ANSS are likely co-integrated. Coint pvalue = 0.009070 ADF test pvalue = 0.003387
+AKAM and ANSS are likely co-integrated. Coint pvalue = 0.009701 ADF test pvalue = 0.004213
+AMD and GOOG are likely co-integrated. Coint pvalue = 0.001230 ADF test pvalue = 0.006913
+AMD and GOOGL are likely co-integrated. Coint pvalue = 0.009639 ADF test pvalue = 0.006344
+AMD and MSFT are likely co-integrated. Coint pvalue = 0.004645 ADF test pvalue = 0.000082
+AMD and NOW are likely co-integrated. Coint pvalue = 0.001180 ADF test pvalue = 0.000125
+AMZN and CRM are likely co-integrated. Coint pvalue = 0.002012 ADF test pvalue = 0.000329
+AMZN and DPZ are likely co-integrated. Coint pvalue = 0.000940 ADF test pvalue = 0.000130
+ANSS and CSGP are likely co-integrated. Coint pvalue = 0.006049 ADF test pvalue = 0.002687
+ANSS and TYL are likely co-integrated. Coint pvalue = 0.003706 ADF test pvalue = 0.002170
+BX and EFX are likely co-integrated. Coint pvalue = 0.003073 ADF test pvalue = 0.001109
+BX and PAYX are likely co-integrated. Coint pvalue = 0.008818 ADF test pvalue = 0.005218
+CDNS and PANW are likely co-integrated. Coint pvalue = 0.001894 ADF test pvalue = 0.000015
+CDNS and SNPS are likely co-integrated. Coint pvalue = 0.000154 ADF test pvalue = 0.000001
+CPRT and CTAS are likely co-integrated. Coint pvalue = 0.007608 ADF test pvalue = 0.002161
+CRM and DPZ are likely co-integrated. Coint pvalue = 0.006374 ADF test pvalue = 0.000665
+DPZ and TYL are likely co-integrated. Coint pvalue = 0.001224 ADF test pvalue = 0.000174
+DXCM and MSCI are likely co-integrated. Coint pvalue = 0.004243 ADF test pvalue = 0.001923
+EBAY and TRMB are likely co-integrated. Coint pvalue = 0.004100 ADF test pvalue = 0.000911
+EBAY and ZBRA are likely co-integrated. Coint pvalue = 0.005536 ADF test pvalue = 0.002326
+EPAM and ETSY are likely co-integrated. Coint pvalue = 0.007428 ADF test pvalue = 0.000171
+EPAM and ZBRA are likely co-integrated. Coint pvalue = 0.004583 ADF test pvalue = 0.003509
+FTNT and PAYX are likely co-integrated. Coint pvalue = 0.009735 ADF test pvalue = 0.001559
+GOOG and GOOGL are likely co-integrated. Coint pvalue = 0.001031 ADF test pvalue = 0.000000
+IT and PANW are likely co-integrated. Coint pvalue = 0.000550 ADF test pvalue = 0.000109
+MA and V are likely co-integrated. Coint pvalue = 0.000010 ADF test pvalue = 0.000001
+MA and VRSK are likely co-integrated. Coint pvalue = 0.000174 ADF test pvalue = 0.000968
+PANW and SNPS are likely co-integrated. Coint pvalue = 0.001058 ADF test pvalue = 0.000007
+V and VRSK are likely co-integrated. Coint pvalue = 0.000956 ADF test pvalue = 0.001975
+Cluster 3:
+ALL and AXP are likely co-integrated. Coint pvalue = 0.000373 ADF test pvalue = 0.000689
+CB and HIG are likely co-integrated. Coint pvalue = 0.006398 ADF test pvalue = 0.001916
+Cluster 4:
+ADI and MCHP are likely co-integrated. Coint pvalue = 0.003239 ADF test pvalue = 0.000626
+AMAT and NXPI are likely co-integrated. Coint pvalue = 0.000313 ADF test pvalue = 0.000003
+LRCX and NXPI are likely co-integrated. Coint pvalue = 0.009099 ADF test pvalue = 0.000200
+Cluster 5:
+AEE and PCG are likely co-integrated. Coint pvalue = 0.004941 ADF test pvalue = 0.004093
+AEP and ETR are likely co-integrated. Coint pvalue = 0.005089 ADF test pvalue = 0.000002
+AEP and PCG are likely co-integrated. Coint pvalue = 0.000423 ADF test pvalue = 0.003859
+CMS and ETR are likely co-integrated. Coint pvalue = 0.003223 ADF test pvalue = 0.000088
+CMS and PCG are likely co-integrated. Coint pvalue = 0.000401 ADF test pvalue = 0.000392
+DTE and DUK are likely co-integrated. Coint pvalue = 0.006076 ADF test pvalue = 0.000107
+ETR and PCG are likely co-integrated. Coint pvalue = 0.000399 ADF test pvalue = 0.003109
+LNT and NEE are likely co-integrated. Coint pvalue = 0.006050 ADF test pvalue = 0.003289
+LNT and PCG are likely co-integrated. Coint pvalue = 0.000944 ADF test pvalue = 0.002309
+PCG and WEC are likely co-integrated. Coint pvalue = 0.004332 ADF test pvalue = 0.000031
+PEG and PPL are likely co-integrated. Coint pvalue = 0.009991 ADF test pvalue = 0.002934
+Cluster 6:
+AVY and CBRE are likely co-integrated. Coint pvalue = 0.006714 ADF test pvalue = 0.000107
+AVY and EMR are likely co-integrated. Coint pvalue = 0.008554 ADF test pvalue = 0.000433
+CAT and PH are likely co-integrated. Coint pvalue = 0.002837 ADF test pvalue = 0.002737
+CAT and URI are likely co-integrated. Coint pvalue = 0.007997 ADF test pvalue = 0.003047
+EMR and PKG are likely co-integrated. Coint pvalue = 0.009128 ADF test pvalue = 0.001764
+ETN and URI are likely co-integrated. Coint pvalue = 0.009902 ADF test pvalue = 0.001524
+HUBB and PWR are likely co-integrated. Coint pvalue = 0.000740 ADF test pvalue = 0.001834
+NUE and SNA are likely co-integrated. Coint pvalue = 0.002754 ADF test pvalue = 0.000358
+PH and URI are likely co-integrated. Coint pvalue = 0.000131 ADF test pvalue = 0.000060
+Cluster 7:
+MET and RJF are likely co-integrated. Coint pvalue = 0.005138 ADF test pvalue = 0.001751
+Cluster 8:
+ARE and CCI are likely co-integrated. Coint pvalue = 0.008397 ADF test pvalue = 0.002315
+AVB and EQR are likely co-integrated. Coint pvalue = 0.005917 ADF test pvalue = 0.001862
+EQR and ESS are likely co-integrated. Coint pvalue = 0.005158 ADF test pvalue = 0.001732
+EQR and UDR are likely co-integrated. Coint pvalue = 0.005086 ADF test pvalue = 0.001770
+Cluster 9:
+Cluster 10:
+Cluster 11:
+CL and DVA are likely co-integrated. Coint pvalue = 0.001732 ADF test pvalue = 0.000789
+HSIC and HSY are likely co-integrated. Coint pvalue = 0.001089 ADF test pvalue = 0.006390
+HSIC and KO are likely co-integrated. Coint pvalue = 0.000943 ADF test pvalue = 0.002921
+HSY and KO are likely co-integrated. Coint pvalue = 0.006979 ADF test pvalue = 0.000193
+KHC and MO are likely co-integrated. Coint pvalue = 0.009609 ADF test pvalue = 0.001038
+KO and T are likely co-integrated. Coint pvalue = 0.008446 ADF test pvalue = 0.002858
+MDLZ and PG are likely co-integrated. Coint pvalue = 0.007648 ADF test pvalue = 0.003524
+MDLZ and WBA are likely co-integrated. Coint pvalue = 0.009880 ADF test pvalue = 0.001597
+MKC and TAP are likely co-integrated. Coint pvalue = 0.004527 ADF test pvalue = 0.001765
+PEP and T are likely co-integrated. Coint pvalue = 0.002078 ADF test pvalue = 0.001869
+Cluster 12:
+Cluster 13:
+Cluster 14:
+Cluster 15:
+Cluster 16:
+FAST and NDSN are likely co-integrated. Coint pvalue = 0.004490 ADF test pvalue = 0.000390
+Cluster 17:
+Cluster 18:
