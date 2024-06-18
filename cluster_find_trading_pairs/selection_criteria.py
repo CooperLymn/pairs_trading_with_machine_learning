@@ -1,10 +1,12 @@
+import pandas as pd
 from statsmodels.api import add_constant, OLS
 from statsmodels.tsa.stattools import coint, adfuller
 import numpy as np
 from hurst import compute_Hc
+import pandas as pd
 
 class PairsSelection:
-    def __init__(self, leg1_name, leg1, leg2_name, leg2):
+    def __init__(self, leg1_name: str, leg1: pd.DataFrame, leg2_name: str, leg2: pd.DataFrame):
         self.leg1_name = leg1_name
         self.leg1 = leg1
         self.leg2_name = leg2_name

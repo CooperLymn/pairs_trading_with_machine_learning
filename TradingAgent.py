@@ -2,8 +2,7 @@ from matplotlib import pyplot as plt
 import pandas as pd
 
 class PairsTradingAgent:
-    def __init__(self, stock1, stock2, spread, entry=1.0, exit=0.5):
-        # stock1, stock2, and spread are all Pandas DataFrames
+    def __init__(self, stock1: pd.DataFrame, stock2: pd.DataFrame, spread: pd.DataFrame, entry=1.0, exit=0.5):
         self.stock1 = stock1
         self.stock2 = stock2
         self.spread = spread
