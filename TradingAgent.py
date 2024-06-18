@@ -1,22 +1,5 @@
 from matplotlib import pyplot as plt
 import pandas as pd
-from statsmodels.api import add_constant, OLS
-
-def compute_spread(data, stock1, stock2):
-    # lp = np.log(data)
-    # S1 = lp[stock1]
-    S1 = data[stock1]
-    S1 = add_constant(S1)
-    # S2 = lp[stock2]
-    S2 = data[stock2]
-    linear_regression = OLS(S2, S1).fit()
-    S1 = S1[stock1]
-    beta = linear_regression.params[stock1]
-    spread = S2 - beta * S1
-    return spread
-
-def zscore_normalization(data):
-    return (data - data.mean()) / data.std()
 
 class PairsTradingAgent:
     def __init__(self, stock1, stock2, spread, entry=1.0, exit=0.5):
@@ -36,7 +19,7 @@ class PairsTradingAgent:
         self.n_share_stock2 = pd.DataFrame(index=self.spread.index, columns=["n_share_stock2"], dtype=float)
         self.n_share_stock2["n_share_stock2"] = 0.0
         self.cash = pd.DataFrame(index=self.spread.index, columns=["cash"], dtype=float)
-        self.cash["cash"] = 0.0
+        self.cash.loc[:, "cash"] = 1.0
         self.portfolio_value = pd.DataFrame(index=self.spread.index, columns=["portfolio_value"], dtype=float)
         self.portfolio_value["portfolio_value"] = 0.0
 
@@ -45,7 +28,7 @@ class PairsTradingAgent:
     def initialize(self):
         self.n_share_stock1["n_share_stock1"] = 0.0
         self.n_share_stock2["n_share_stock2"] = 0.0
-        self.cash["cash"] = 0.0
+        self.cash.loc[:, "cash"] = 1.0
         self.portfolio_value["portfolio_value"] = 0.0
 
     def plot_threshold(self):
@@ -78,21 +61,22 @@ class PairsTradingAgent:
         print(f"Amount of cash: {self.cash.loc[time, 'cash']}")
         print(f"Total value of asset: {self.portfolio_value.loc[time, 'portfolio_value']}")
 
-    def long_position(self, time, amount=1.0, n_share=10.0):
+    def long_position(self, time, amount=1.0):
+        # As trading progresses, we consider that all the capital earned by a pair in the trading period
+        # is reinvested in the next trade.
+        amount = self.cash.loc[time, 'cash']
+        # print(f'Long amount {amount}')
         self.n_share_stock1.loc[time:, "n_share_stock1"] += amount / self.stock1.loc[time]
         self.n_share_stock2.loc[time:, "n_share_stock2"] -= amount / self.stock2.loc[time]
-        # self.n_share_stock1.loc[time:, "n_share_stock1"] += n_share
-        # self.n_share_stock2.loc[time:, "n_share_stock2"] -= n_share * self.ratio.loc[time]
-        # self.cash.loc[time:, "cash"] -= n_share * self.stock1.loc[time]
-        # self.cash.loc[time:, "cash"] += n_share * self.ratio.loc[time] * self.stock2.loc[time]
 
-    def short_position(self, time, amount=1.0, n_share=10.0):
+
+    def short_position(self, time, amount=1.0):
+        # As trading progresses, we consider that all the capital earned by a pair in the trading period
+        # is reinvested in the next trade.
+        amount = self.cash.loc[time, 'cash']
+        # print(f'Short amount {amount}')
         self.n_share_stock1.loc[time:, "n_share_stock1"] -= amount / self.stock1.loc[time]
         self.n_share_stock2.loc[time:, "n_share_stock2"] += amount / self.stock2.loc[time]
-        # self.n_share_stock1.loc[time:, "n_share_stock1"] -= n_share
-        # self.n_share_stock2.loc[time:, "n_share_stock2"] += n_share * self.ratio.loc[time]
-        # self.cash.loc[time:, "cash"] += n_share * self.stock1.loc[time]
-        # self.cash.loc[time:, "cash"] -= n_share * self.ratio.loc[time] * self.stock2.loc[time]
 
     def clear_position(self, time):
         self.cash.loc[time:, "cash"] += self.n_share_stock1.loc[time, "n_share_stock1"] * self.stock1.loc[time]
