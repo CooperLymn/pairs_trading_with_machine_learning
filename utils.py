@@ -23,23 +23,30 @@ def ADF_test(spread):
     return adf_pvalue
 
 def compute_sharpe_ratio(porfolio: pd.DataFrame, risk_free_rate: float):
+    # daily_return = np.log(porfolio / porfolio.shift(1))
     daily_return = porfolio.pct_change().dropna()
-    mean_daily_return = daily_return.mean()
-    std_daily_return = daily_return.std()
+    trading_days_per_year = 252
 
-    # Annualize the mean daily return and standard deviation
-    trading_days_per_year = 252  # Typical number of trading days in a year
-    annualized_return = (1 + mean_daily_return) ** trading_days_per_year - 1
-    annualized_std = std_daily_return * np.sqrt(trading_days_per_year)
+    volatility = daily_return.std() * np.sqrt(trading_days_per_year)
 
-    sharpe_ratio = (annualized_return - risk_free_rate) / annualized_std
+    sharpe_ratio = (daily_return.mean() * trading_days_per_year - risk_free_rate) / volatility
 
-    return sharpe_ratio
+    volatility = volatility.values[0]
+    sharpe_ratio = sharpe_ratio.values[0]
+
+    return volatility, sharpe_ratio
 
 def compute_volatility(portfolio: pd.DataFrame):
     daily_return = portfolio.pct_change().dropna()
-    std_daily_return = daily_return.std()
     trading_days_per_year = 252
-    annualized_volatility = std_daily_return * np.sqrt(trading_days_per_year)
+    annualized_volatility = daily_return.std() * np.sqrt(trading_days_per_year)
 
     return annualized_volatility
+
+def compute_maximal_drawdown(portfolio: pd.DataFrame):
+    daily_return = portfolio.pct_change().dropna()
+    cumulative_returns = (1 + daily_return).cumprod()
+    cumulative_max = cumulative_returns.cummax()
+    drawdown = (cumulative_returns - cumulative_max) / cumulative_max
+    maximal_drawdown = min(drawdown.iloc[1:].values)
+    return maximal_drawdown[0]

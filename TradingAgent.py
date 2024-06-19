@@ -25,10 +25,10 @@ class PairsTradingAgent:
         self.trading_signals = pd.DataFrame(index=self.spread.index)
 
     def initialize(self):
-        self.n_share_stock1["n_share_stock1"] = 0.0
-        self.n_share_stock2["n_share_stock2"] = 0.0
+        self.n_share_stock1.loc[:, "n_share_stock1"] = 0.0
+        self.n_share_stock2.loc[:, "n_share_stock2"] = 0.0
         self.cash.loc[:, "cash"] = 1.0
-        self.portfolio_value["portfolio_value"] = 0.0
+        self.portfolio_value.loc[:, "portfolio_value"] = 0.0
 
     def plot_threshold(self):
         plt.figure(figsize=(13, 6))
