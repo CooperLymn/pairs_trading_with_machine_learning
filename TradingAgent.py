@@ -2,7 +2,9 @@ from matplotlib import pyplot as plt
 import pandas as pd
 
 class PairsTradingAgent:
-    def __init__(self, stock1: pd.DataFrame, stock2: pd.DataFrame, spread: pd.DataFrame, entry=1.0, exit=0.5):
+    def __init__(self, stock1: pd.DataFrame, stock2: pd.DataFrame, spread: pd.DataFrame,
+                 entry=1.0, exit=0.5, initial_capital=1.0):
+
         self.stock1 = stock1
         self.stock2 = stock2
         self.spread = spread
@@ -12,13 +14,14 @@ class PairsTradingAgent:
         self.upper_exit = exit
         self.lower_entry = -entry
         self.lower_exit = -exit
+        self.initial_capital = initial_capital
 
         self.n_share_stock1 = pd.DataFrame(index=self.spread.index, columns=["n_share_stock1"], dtype=float)
         self.n_share_stock1["n_share_stock1"] = 0.0
         self.n_share_stock2 = pd.DataFrame(index=self.spread.index, columns=["n_share_stock2"], dtype=float)
         self.n_share_stock2["n_share_stock2"] = 0.0
         self.cash = pd.DataFrame(index=self.spread.index, columns=["cash"], dtype=float)
-        self.cash.loc[:, "cash"] = 1.0
+        self.cash.loc[:, "cash"] = self.initial_capital
         self.portfolio_value = pd.DataFrame(index=self.spread.index, columns=["portfolio_value"], dtype=float)
         self.portfolio_value["portfolio_value"] = 0.0
 
@@ -27,7 +30,7 @@ class PairsTradingAgent:
     def initialize(self):
         self.n_share_stock1.loc[:, "n_share_stock1"] = 0.0
         self.n_share_stock2.loc[:, "n_share_stock2"] = 0.0
-        self.cash.loc[:, "cash"] = 1.0
+        self.cash.loc[:, "cash"] = self.initial_capital
         self.portfolio_value.loc[:, "portfolio_value"] = 0.0
 
     def plot_threshold(self):
@@ -60,22 +63,34 @@ class PairsTradingAgent:
         print(f"Amount of cash: {self.cash.loc[time, 'cash']}")
         print(f"Total value of asset: {self.portfolio_value.loc[time, 'portfolio_value']}")
 
-    def long_position(self, time, amount=1.0):
+    def long_position(self, time, if_fixed_capital:bool, capital=1.0, capital_ratio=0.05):
+        if if_fixed_capital == False:
         # As trading progresses, we consider that all the capital earned by a pair in the trading period
         # is reinvested in the next trade.
-        amount = self.cash.loc[time, 'cash']
-        # print(f'Long amount {amount}')
-        self.n_share_stock1.loc[time:, "n_share_stock1"] += amount / self.stock1.loc[time]
-        self.n_share_stock2.loc[time:, "n_share_stock2"] -= amount / self.stock2.loc[time]
+        # Allocate a fixed percent of capital in each trade
+            allocate_capital = self.cash.loc[time, 'cash'] * capital_ratio
+
+        elif if_fixed_capital == True:
+        # or always allocate a fixed amount of capital in each trade
+            allocate_capital = capital
+
+        self.n_share_stock1.loc[time:, "n_share_stock1"] += allocate_capital / self.stock1.loc[time]
+        self.n_share_stock2.loc[time:, "n_share_stock2"] -= allocate_capital / self.stock2.loc[time]
 
 
-    def short_position(self, time, amount=1.0):
+    def short_position(self, time, if_fixed_capital:bool, capital=1.0, capital_ratio=0.05):
+        if if_fixed_capital == False:
         # As trading progresses, we consider that all the capital earned by a pair in the trading period
         # is reinvested in the next trade.
-        amount = self.cash.loc[time, 'cash']
-        # print(f'Short amount {amount}')
-        self.n_share_stock1.loc[time:, "n_share_stock1"] -= amount / self.stock1.loc[time]
-        self.n_share_stock2.loc[time:, "n_share_stock2"] += amount / self.stock2.loc[time]
+        # Allocate a fixed percent of capital in each trade
+            allocate_capital = self.cash.loc[time, 'cash'] * capital_ratio
+
+        elif if_fixed_capital == True:
+        # or always allocate a fixed amount of capital in each trade
+            allocate_capital = capital
+
+        self.n_share_stock1.loc[time:, "n_share_stock1"] -= allocate_capital / self.stock1.loc[time]
+        self.n_share_stock2.loc[time:, "n_share_stock2"] += allocate_capital / self.stock2.loc[time]
 
     def clear_position(self, time):
         self.cash.loc[time:, "cash"] += self.n_share_stock1.loc[time, "n_share_stock1"] * self.stock1.loc[time]
@@ -110,13 +125,13 @@ class PairsTradingAgent:
             if self.trading_signals.loc[ind, 'Action'] != 'None':
                 print(f"{self.trading_signals.loc[ind, 'Action']} at {ind}")
 
-    def backtesting(self):
+    def backtesting(self, if_fixed_capital:bool, trading_capital=1.0, trading_capital_ratio=0.05):
         for ind in self.trading_signals.index:
             action = self.trading_signals.loc[ind, 'Action']
             if action == 'Long Entry':
-                self.long_position(ind)
+                self.long_position(ind, if_fixed_capital, trading_capital, trading_capital_ratio)
             elif action == 'Short Entry':
-                self.short_position(ind)
+                self.short_position(ind, if_fixed_capital, trading_capital, trading_capital_ratio)
             elif action == 'Long Exit' or action == 'Short Exit':
                 self.clear_position(ind)
 
@@ -136,9 +151,9 @@ class PairsTradingAgent:
         plt.plot(self.portfolio_value, label='portfolio_value')
         plt.legend
 
-    def trading_simulation(self, entry, exit):
+    def trading_simulation(self, entry, exit, if_fixed_capital:bool, trading_capital=1.0, trading_capital_ratio=0.05):
         self.initialize()
         self.set_threshold(entry, exit)
         self.generate_trading_signals()
-        portfolio_value = self.backtesting()
+        portfolio_value = self.backtesting(if_fixed_capital, trading_capital, trading_capital_ratio)
         return portfolio_value
