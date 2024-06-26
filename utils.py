@@ -17,6 +17,7 @@ def compute_spread(data, stock1: str, stock2: str):
 
 def zscore_normalization(data):
     return (data - data.mean()) / data.std()
+
 def ADF_test(spread):
     adf = adfuller(spread, maxlag=1)
     adf_pvalue = adf[1]
