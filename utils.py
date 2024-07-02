@@ -23,19 +23,26 @@ def ADF_test(spread):
     adf_pvalue = adf[1]
     return adf_pvalue
 
-def compute_sharpe_ratio(porfolio: pd.DataFrame, risk_free_rate: float):
-    # daily_return = np.log(porfolio / porfolio.shift(1))
-    daily_return = porfolio.pct_change().dropna()
-    trading_days_per_year = 252
+# def compute_sharpe_ratio(porfolio: pd.DataFrame, risk_free_rate: float):
+#     # daily_return = np.log(porfolio / porfolio.shift(1))
+#     daily_return = porfolio.pct_change().dropna()
+#     trading_days_per_year = 252
+#
+#     volatility = daily_return.std() * np.sqrt(trading_days_per_year)
+#
+#     sharpe_ratio = (daily_return.mean() * trading_days_per_year - risk_free_rate) / volatility
+#
+#     volatility = volatility.values[0]
+#     sharpe_ratio = sharpe_ratio.values[0]
+#
+#     return volatility, sharpe_ratio
 
-    volatility = daily_return.std() * np.sqrt(trading_days_per_year)
-
-    sharpe_ratio = (daily_return.mean() * trading_days_per_year - risk_free_rate) / volatility
-
-    volatility = volatility.values[0]
-    sharpe_ratio = sharpe_ratio.values[0]
-
-    return volatility, sharpe_ratio
+def compute_sharpe_ratio(porfolio: pd.DataFrame, annual_risk_free_rate: float):
+    daily_returns = porfolio.pct_change().dropna()
+    daily_risk_free_rate = (1 + annual_risk_free_rate) ** (1 / 252) - 1
+    excess_returns = daily_returns - daily_risk_free_rate
+    sharpe_ratio = (excess_returns.mean() / excess_returns.std()) * (252 ** 0.5)
+    return sharpe_ratio.values[0]
 
 def compute_volatility(portfolio: pd.DataFrame):
     daily_return = portfolio.pct_change().dropna()
