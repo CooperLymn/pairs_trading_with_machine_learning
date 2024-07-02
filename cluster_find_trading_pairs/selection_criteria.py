@@ -48,13 +48,6 @@ class PairsSelection:
                 - Hurst Exponent = 0.5: Time series is a geometric random walk.
                 - Hurst Exponent > 0.5: Time series is mean-reverting.
         """
-        # lags = range(2, 200)
-        # tau = [np.sqrt(np.std(np.subtract(self.spread[lag:], self.spread[:-lag]))) for lag in lags]
-        # poly = np.polyfit(np.log(lags), np.log(tau), 1)
-        #
-        # hurst_exponent = poly[0] * 2.0
-        # self.hurst_exponent = hurst_exponent
-
         h, c, data = compute_Hc(self.spread)
         self.hurst_exponent = h
 
