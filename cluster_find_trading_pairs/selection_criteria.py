@@ -46,7 +46,7 @@ class PairsSelection:
 
                 - Hurst Exponent < 0.5: Time series is stationary.
                 - Hurst Exponent = 0.5: Time series is a geometric random walk.
-                - Hurst Exponent > 0.5: Time series is trending.
+                - Hurst Exponent > 0.5: Time series is mean-reverting.
         """
         # lags = range(2, 200)
         # tau = [np.sqrt(np.std(np.subtract(self.spread[lag:], self.spread[:-lag]))) for lag in lags]
@@ -93,6 +93,11 @@ class PairsSelection:
 
 
     def is_eligible(self):
+        """
+        Pass the trading pair's spread series through co-integration test, ADF test
+        Compute its Hurst Exponent, half life and zero crossings.
+        :return: whether the trading pair is eligible or not.
+        """
         self.coint_test()
         if self.coint_pvalue > self.coint_threshold:
             return False

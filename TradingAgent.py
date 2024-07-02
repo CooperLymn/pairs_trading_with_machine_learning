@@ -152,6 +152,10 @@ class PairsTradingAgent:
         plt.legend
 
     def trading_simulation(self, entry, exit, if_fixed_capital:bool, trading_capital=1.0, trading_capital_ratio=0.05):
+        """
+        :param if_fixed_capital: whether to use fixed capital or a fixed capital ratio in each trade
+        :return: portfolio values throughout backtesting, stored in a Pandas Series
+        """
         self.initialize()
         self.set_threshold(entry, exit)
         self.generate_trading_signals()
